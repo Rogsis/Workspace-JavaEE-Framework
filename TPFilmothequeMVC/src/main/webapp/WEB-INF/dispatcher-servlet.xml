@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	    http://www.springframework.org/schema/tx
+	    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	    http://www.springframework.org/schema/data/jpa
+	    http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd">
+	
+	<!-- Externalisation des paramètres -->
+	 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	 	<property name="location" value="classpath:datasource.properties"></property>
+	 </bean>
+	
+	<context:annotation-config/>
+	
+	<!-- Dire où se situent les controleurs -->
+	<context:component-scan base-package="fr.eni.mvc.controller"/>
+	<!-- Dire où se situent les services -->
+	<context:component-scan base-package="fr.eni.mvc.service"/>
+	
+	<!-- Dire où se situent les JSP -->
+	<bean id="viewResolver" 
+			class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	
+	<!-- Configuration de la datasource -->
+	 <bean id="datasource" class="org.apache.commons.dbcp2.BasicDataSource">
+	 	<property name="driverClassName" value="${driverClassName}"></property>
+	 	<property name="url" value="${url}"></property>
+	 	<property name="username" value="${username}"></property>
+	 	<property name="password" value="${password}"></property>
+	 	
+	 	<property name="initialSize" value="2"></property>
+	 	<property name="maxTotal" value="8"></property>
+	 	<property name="minIdle" value="8"></property>
+	 </bean>
+	
+	<!-- Configuration de l'EntityManagerFactory utilisant la datasource -->
+	 <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+	 	
+	 	<!-- Indiquer où se situe les entités -->
+	 	<property name="packagesToScan">
+	 		<list>
+	 			<value>fr.eni.mvc.bean</value>
+	 		</list>
+	 	</property>
+	 	
+	 	<!-- Indiquer la datasource à utiliser -->
+	 	<property name="dataSource" ref="datasource"></property>
+	 	
+	 	<!-- Indiquer les propriétés spécifiques à l'implémentation utilisée -->
+	 	<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			</bean>
+		</property>
+	 	
+	 	<property name="jpaProperties">
+	 		<props>
+	 			<prop key="hibernate.show_sql">true</prop>
+	 			<prop key="hibernate.format_sql">true</prop>
+<!-- 	 			<prop key="hibernate.hbm2ddl.auto">create</prop> -->
+	 		</props>
+	 	</property>
+	 </bean>
+	 
+	 <!-- Configuration du TransactionManager pour pouvoir utiliser l'annotation @Transactional -->
+	 <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+	 	<property name="entityManagerFactory" ref="emf"></property>
+	 </bean>
+	 <tx:annotation-driven transaction-manager="transactionManager"/>
+	 
+	 <!-- Utilisation de JPA -->
+	 <jpa:repositories base-package="fr.eni.mvc.dao"
+	 					entity-manager-factory-ref="emf"></jpa:repositories>
+	 
+	
+</beans>	    
+
+
+
+
+
+
+
+
+
+
+
+
+

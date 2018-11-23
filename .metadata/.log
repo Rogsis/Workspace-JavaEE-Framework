@@ -4924,3 +4924,62 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.resources 4 4 2018-11-23 11:25:46.372
+!MESSAGE Exception occurred while saving project preferences: /TPFilmothequeMVC/.settings/org.eclipse.buildship.core.prefs.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: A resource already exists on disk 'D:\workspace\TPFilmothequeMVC\.settings'.
+	at org.eclipse.core.internal.resources.Folder.assertCreateRequirements(Folder.java:47)
+	at org.eclipse.core.internal.resources.Folder.create(Folder.java:93)
+	at org.eclipse.core.internal.resources.ProjectPreferences$1.run(ProjectPreferences.java:634)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.ProjectPreferences.save(ProjectPreferences.java:660)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalFlush(EclipsePreferences.java:431)
+	at org.eclipse.core.internal.resources.ProjectPreferences.flush(ProjectPreferences.java:365)
+	at org.eclipse.buildship.core.configuration.internal.PreferenceStore$ProjectScopeEclipsePreferencesPreferenceStore.flush(PreferenceStore.java:151)
+	at org.eclipse.buildship.core.configuration.internal.BuildConfigurationPersistence.saveRootDirPreference(BuildConfigurationPersistence.java:160)
+	at org.eclipse.buildship.core.configuration.internal.BuildConfigurationPersistence.savePathToRoot(BuildConfigurationPersistence.java:90)
+	at org.eclipse.buildship.core.configuration.internal.DefaultConfigurationManager.saveProjectConfiguration(DefaultConfigurationManager.java:140)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeGradleProjectWithWorkspaceProject(SynchronizeGradleBuildOperation.java:175)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.access$000(SynchronizeGradleBuildOperation.java:99)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation$1.run(SynchronizeGradleBuildOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeProjectsWithWorkspace(SynchronizeGradleBuildOperation.java:131)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.run(SynchronizeGradleBuildOperation.java:115)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildsJob.synchronizeBuild(SynchronizeGradleBuildsJob.java:85)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildsJob.runToolingApiJob(SynchronizeGradleBuildsJob.java:73)
+	at org.eclipse.buildship.core.util.progress.ToolingApiJob$1.run(ToolingApiJob.java:73)
+	at org.eclipse.buildship.core.util.progress.ToolingApiInvoker.invoke(ToolingApiInvoker.java:62)
+	at org.eclipse.buildship.core.util.progress.ToolingApiJob.run(ToolingApiJob.java:70)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+!SUBENTRY 1 org.eclipse.core.resources 4 272 2018-11-23 11:25:46.385
+!MESSAGE A resource already exists on disk 'D:\workspace\TPFilmothequeMVC\.settings'.
+
+!ENTRY org.eclipse.buildship.core 4 0 2018-11-23 11:25:46.414
+!MESSAGE Synchronize Gradle projects with workspace failed due to an error configuring Eclipse.
+!STACK 0
+org.eclipse.buildship.core.GradlePluginsRuntimeException: Cannot store preferences in project TPFilmothequeMVC in node org.eclipse.buildship.core.
+	at org.eclipse.buildship.core.configuration.internal.PreferenceStore$ProjectScopeEclipsePreferencesPreferenceStore.flush(PreferenceStore.java:153)
+	at org.eclipse.buildship.core.configuration.internal.BuildConfigurationPersistence.saveRootDirPreference(BuildConfigurationPersistence.java:160)
+	at org.eclipse.buildship.core.configuration.internal.BuildConfigurationPersistence.savePathToRoot(BuildConfigurationPersistence.java:90)
+	at org.eclipse.buildship.core.configuration.internal.DefaultConfigurationManager.saveProjectConfiguration(DefaultConfigurationManager.java:140)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeGradleProjectWithWorkspaceProject(SynchronizeGradleBuildOperation.java:175)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.access$000(SynchronizeGradleBuildOperation.java:99)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation$1.run(SynchronizeGradleBuildOperation.java:134)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2262)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.synchronizeProjectsWithWorkspace(SynchronizeGradleBuildOperation.java:131)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildOperation.run(SynchronizeGradleBuildOperation.java:115)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildsJob.synchronizeBuild(SynchronizeGradleBuildsJob.java:85)
+	at org.eclipse.buildship.core.workspace.internal.SynchronizeGradleBuildsJob.runToolingApiJob(SynchronizeGradleBuildsJob.java:73)
+	at org.eclipse.buildship.core.util.progress.ToolingApiJob$1.run(ToolingApiJob.java:73)
+	at org.eclipse.buildship.core.util.progress.ToolingApiInvoker.invoke(ToolingApiInvoker.java:62)
+	at org.eclipse.buildship.core.util.progress.ToolingApiJob.run(ToolingApiJob.java:70)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:56)
+Caused by: org.osgi.service.prefs.BackingStoreException: Exception occurred while saving project preferences: /TPFilmothequeMVC/.settings/org.eclipse.buildship.core.prefs.
+	at org.eclipse.core.internal.resources.ProjectPreferences.save(ProjectPreferences.java:670)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalFlush(EclipsePreferences.java:431)
+	at org.eclipse.core.internal.resources.ProjectPreferences.flush(ProjectPreferences.java:365)
+	at org.eclipse.buildship.core.configuration.internal.PreferenceStore$ProjectScopeEclipsePreferencesPreferenceStore.flush(PreferenceStore.java:151)
+	... 16 more
