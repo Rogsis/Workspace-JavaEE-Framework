@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	    ">
+	<bean id="livre1" class="fr.eni.spring.bean.Media">
+		<constructor-arg name="titre" value="Moby Dick"></constructor-arg>
+		<constructor-arg name="nom" value="Hermann Melville"></constructor-arg>
+	</bean>
+	
+	<bean id="livre2" class="fr.eni.spring.bean.Media">
+		<constructor-arg name="titre" value="La nuit des temps"></constructor-arg>
+		<constructor-arg name="nom" value="Barjavel"></constructor-arg>
+	</bean>
+	
+	<bean id="typeTheque" class="fr.eni.spring.bean.type.Bibliotheque">
+		<property name="media" value="livre"></property>
+		<property name="nom" value="bibliothèque"></property>
+	</bean> 
+	
+	<bean id="mediatheque" class="fr.eni.spring.bean.Mediatheque">
+		<property name="typeTheque" ref="typeTheque"></property>
+		<property name="medias">
+<!-- 			<list value-type="fr.eni.spring.bean.Media"> -->
+			<list>
+				<ref bean="livre1"/>
+				<ref bean="livre2"/>
+			</list>
+		</property>
+	</bean>
+	
+
+
+</beans>	    
+

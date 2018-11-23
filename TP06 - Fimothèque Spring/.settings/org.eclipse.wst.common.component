@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TP06 - Fimothèque Spring">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <property name="context-root" value="TP06_-_Fimothèque_Spring"/>
+        <property name="java-output-path" value="/TP06 - Fimothèque Spring/bin"/>
+    </wb-module>
+</project-modules>
