@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    ">
+
+	<bean id="ch1" class="fr.eni.ecf.spring.commande.bean.Chemise">
+		<property name="taille" value="40"></property>
+		<property name="ref" value="CH-bleue-40"></property>
+		<property name="libelle" value="Chemisette bleue"></property>
+		<property name="quantite" value="2"></property>
+	</bean>
+
+	<bean id="ce1" class="fr.eni.ecf.spring.commande.bean.Ceinture">
+		<property name="couleur" value="Marron"></property>
+		<property name="ref" value="CE-marron-cuir"></property>
+		<property name="libelle" value="Ceinture cuir marron"></property>
+		<property name="quantite" value="1"></property>
+	</bean>
+
+	<bean id="adresse" class="fr.eni.ecf.spring.commande.bean.Adresse">
+		<property name="id" value="1"></property>
+		<property name="codePostal" value="75001"></property>
+		<property name="ville" value="Paris"></property>
+	</bean>
+
+	<bean id="client" class="fr.eni.ecf.spring.commande.bean.Client"
+		autowire="byName">
+		<property name="id" value="4"></property>
+		<property name="nom" value="Legrand"></property>
+		<property name="prenom" value="Jeanne"></property>
+	</bean>
+
+	<bean id="commande" class="fr.eni.ecf.spring.commande.bean.Commande"
+		autowire="byName">
+		<property name="id" value="17"></property>
+		<property name="produits">
+			<list value-type="fr.eni.ecf.spring.commande.bean.Produit">
+				<ref bean="ch1" />
+				<ref bean="ce1" />
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
+
+	
